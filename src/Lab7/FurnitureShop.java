@@ -19,17 +19,17 @@ public class FurnitureShop
         Person person = new Person();
 
         int in = 0;
-        System.out.println("Введите количество добавляемых стульев: ");
+        System.out.print("Введите количество добавляемых стульев: ");
         in = sc.nextInt();
         for (int i = 0; i < in; i++)
             person.addChair(chair);
 
-        System.out.println("Введите количество добавляемых диванов: ");
+        System.out.print("Введите количество добавляемых диванов: ");
         in = sc.nextInt();
         for (int i = 0; i < in; i++)
             person.addSofa(sofa);
 
-        System.out.println("Введите количество добавляемых столов: ");
+        System.out.print("Введите количество добавляемых столов: ");
         in = sc.nextInt();
         for (int i = 0; i < in; i++)
             person.addTable(table);

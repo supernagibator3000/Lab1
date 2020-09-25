@@ -1,11 +1,11 @@
 package Lab7;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Person {
-    private List<Chair>chairs;
-    private List<Sofa>sofas;
-    private List<Table>tables;
+    private ArrayList<Chair> chairs = new ArrayList<Chair>();
+    private ArrayList<Sofa>sofas = new ArrayList<Sofa>();
+    private ArrayList<Table>tables = new ArrayList<Table>();
     private int totalPrice;
 
     public void addChair(Chair chair){
@@ -22,7 +22,7 @@ public class Person {
     }
 
     public void outCart(){
-        System.out.println("Корзина\nСтулья: " + chairs.size() + " штук\n"
+        System.out.println("=== Корзина ===\nСтулья: " + chairs.size() + " штук\n"
                 + "Диваны: " + sofas.size() + " штук\n"
                 + "Столы: " + tables.size() + " штук\n"
         + "Итог: " + totalPrice);
