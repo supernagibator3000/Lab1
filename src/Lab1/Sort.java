@@ -1,5 +1,9 @@
 package Lab1;
 
+import java.util.Random;
+
+import static java.util.Arrays.sort;
+
 public class Sort
 {
     public static void main(String[] args)
@@ -15,14 +19,7 @@ public class Sort
                 System.out.println(arr[i]);
         }
 
-        for (int i = 0; i < arr.length; i++)
-            for (int j = i; j < arr.length - 1; j++)
-                if (arr[j] < arr[j + 1])
-                {
-                    buff = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = buff;
-                }
+        sort(arr);
 
         for (int i = 0; i < 5; i++)
         {
@@ -32,5 +29,27 @@ public class Sort
                 System.out.println(arr[i]);
         }
 
+        Random random = new Random();
+
+        for (int i = 0; i < 5; i++)
+            arr[i] = random.nextInt(100);
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (i < 4)
+                System.out.print(arr[i] + " ");
+            else
+                System.out.println(arr[i]);
+        }
+
+        sort(arr);
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (i < 4)
+                System.out.print(arr[i] + " ");
+            else
+                System.out.println(arr[i]);
+        }
     }
 }
