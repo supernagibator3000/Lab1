@@ -14,17 +14,19 @@ public class ShapeCreation extends JFrame {
 
         int width = 500;
         int height = 400;
+        int cols = 5;
+        int rows = 4;
         setSize(width + 15, height + 40);
 
-        for (int i = 0; i < 5; i++){
-            for (int j = 0; j < 4; j++){
+        for (int i = 0; i < cols; i++){
+            for (int j = 0; j < rows; j++){
                 switch((int)(Math.random()*2)){
                     case 0:
-                        circle = new Circle(i*width/5,j*height/4, width/5 - 4,height/4 - 4);
+                        circle = new Circle(i*width/cols,j*height/rows, width/cols - 4,height/rows - 4);
                         add(circle);
                         break;
                     case 1:
-                        square = new Square(i*width/5,j*height/4, width/5 - 4,height/4 - 4);
+                        square = new Square(i*width/cols,j*height/rows, width/cols - 4,height/rows - 4);
                         add(square);
                         break;
                 }
