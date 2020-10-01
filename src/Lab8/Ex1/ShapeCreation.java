@@ -1,8 +1,6 @@
 package Lab8.Ex1;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.Random;
 
 public class ShapeCreation extends JFrame {
     public ShapeCreation(){
