@@ -10,7 +10,7 @@ public class ShowImage extends JFrame {
         setTitle("Вывод изображения");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 500);
-        setResizable(true);
+        setResizable(false);
         setVisible(true);
 
         Graphics g;
@@ -19,9 +19,7 @@ public class ShowImage extends JFrame {
         img = new ImageIcon(path).getImage();
 
         g = getGraphics();
-        while(true) {
-            g.drawImage(img, 0, 0, null);
-        }
+        g.drawImage(img, 0, 0, 500, 500, null);
     }
 
     public static void main(String[] args) {
