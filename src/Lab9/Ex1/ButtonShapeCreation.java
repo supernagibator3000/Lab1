@@ -17,10 +17,10 @@ public class ButtonShapeCreation extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(width + 15, height + 40);
         setResizable(false);
-
         JPanel panel = new JPanel();
-
         JButton button = new JButton("PRESS ME");
+        button.setSize(100, 20);
+        panel.add(button);
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,8 +43,6 @@ public class ButtonShapeCreation extends JFrame{
             }
         };
         button.addActionListener(actionListener);
-        button.setSize(100, 20);
-        panel.add(button);
         add(panel);
         setVisible(true);
     }
