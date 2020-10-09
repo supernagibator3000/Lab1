@@ -19,7 +19,6 @@ public class ButtonShapeCreation extends JFrame{
         setResizable(false);
         JPanel panel = new JPanel();
         JButton button = new JButton("PRESS ME");
-        button.setSize(100, 20);
         panel.add(button);
         ActionListener actionListener = new ActionListener() {
             @Override
