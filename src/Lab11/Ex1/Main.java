@@ -23,6 +23,8 @@ public class Main extends JFrame {
         add(button);
 
         int number = (int)(Math.random()*21);
+
+
         // Для теста
         System.out.println(number);
 
