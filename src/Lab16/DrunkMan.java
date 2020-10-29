@@ -46,12 +46,12 @@ public class DrunkMan {
 
             // Проверка результатов раунда
             // Первый победил
-            if (firstPlayerDeck.isEmpty()){
+            if (secondPlayerDeck.isEmpty()){
                 System.out.println("first " + rounds);
                 return;
             }
             // Второй победил
-            else if (secondPlayerDeck.isEmpty()){
+            else if (firstPlayerDeck.isEmpty()){
                 System.out.println("second " + rounds);
                 return;
             }
