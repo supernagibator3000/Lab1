@@ -1,21 +1,49 @@
 package Lab20;
 
 import java.util.AbstractMap;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MyText {
-    private HashMap<String, Integer> wordsMap;
+    private final HashMap<String, Integer> wordsMap;
+    String[] charExeption = {"(", ")", ".", ",", "!", "?", "\"", ":", ";", "<", ">"};
 
     public MyText(){
         wordsMap = new HashMap<>();
+    }
+
+    public ArrayList<String> fromTextToArray(String text){
+        ArrayList<String> words = new ArrayList<>();
+
+        String[] buffArray = text.split(" ");
+        StringBuilder buffWord;
+
+        int ind;
+
+        for (String word: buffArray) {
+            if (!word.equals("—")) {
+                buffWord = new StringBuilder(word);
+
+                for (String s : charExeption) {
+                    ind = buffWord.indexOf(s);
+                    if (ind != -1)
+                        buffWord.deleteCharAt(ind);
+                }
+
+                word = buffWord.toString();
+                words.add(word);
+            }
+        }
+
+        return words;
     }
 
     public String getMostUsedWord(){
         return this.getMostUsedWordPair().getKey();
     }
 
-    public int getMostUsedWornCounter(){
+    public int getMostUsedWordCounter(){
         return this.getMostUsedWordPair().getValue();
     }
 
@@ -29,14 +57,18 @@ public class MyText {
         return max;
     }
 
-    public void wordsCounter(String[] words){
-        int counter = 0;
-        String buff;
-
+    public void wordsCounter(ArrayList<String> words){
         for (String word: words){
+            word = word.toLowerCase();
             wordsMap.computeIfPresent(word, (key, value) -> value + 1);
             wordsMap.putIfAbsent(word, 1);
         }
+    }
+
+    public void wordsCounter(String word){
+        word = word.toLowerCase();
+        wordsMap.computeIfPresent(word, (key, value) -> value + 1);
+        wordsMap.putIfAbsent(word, 1);
     }
 
     public void wordsCounterOutput(){
@@ -48,5 +80,9 @@ public class MyText {
             value = pair.getValue();
             System.out.println(key + ": " + value);
         }
+    }
+
+    public String replaceSpacebar(char replacement, String text){
+        return text.replace(' ', replacement);
     }
 }
