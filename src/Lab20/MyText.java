@@ -1,13 +1,13 @@
 package Lab20;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 
 public class MyText {
     private final HashMap<String, Integer> wordsMap;
-    String[] charExeption = {"(", ")", ".", ",", "!", "?", "\"", ":", ";", "<", ">"};
+    String[] charExeption = {"(", ")", ".", ",", "!", "?", "\"", ":", ";", "<", ">", "[", "]"};
 
     public MyText(){
         wordsMap = new HashMap<>();
@@ -22,7 +22,7 @@ public class MyText {
         int ind;
 
         for (String word: buffArray) {
-            if (!word.equals("—")) {
+            if (!word.equals("—") && !word.equals("-") && !word.equals("")) {
                 buffWord = new StringBuilder(word);
 
                 for (String s : charExeption) {
@@ -85,4 +85,51 @@ public class MyText {
     public String replaceSpacebar(char replacement, String text){
         return text.replace(' ', replacement);
     }
-}
+
+    public void tenMostUsedWords(){
+        HashMap<String, Integer> buff = new HashMap<>();
+        String buffKey = "";
+        Integer buffValue = 0;
+
+        for (int i = 0; i < 10; i++){
+            buffValue = 0;
+            for (HashMap.Entry<String, Integer> pair : wordsMap.entrySet()){
+                if (!buff.containsKey(pair.getKey()) && pair.getValue() > buffValue){
+                    buffKey = pair.getKey();
+                    buffValue = pair.getValue();
+                }
+            }
+            buff.put(buffKey, buffValue);
+            System.out.println(i + 1 + ". \"" + buffKey + "\" " + buffValue);
+        }
+    }
+
+    public void textReader(String path){
+        try {
+            FileReader fileReader = new FileReader(path);
+            Scanner sc = new Scanner(fileReader);
+
+            while (sc.hasNextLine())
+                wordsCounter(fromTextToArray(sc.nextLine()));
+
+            fileReader.close();
+        }
+        catch (IOException ignored){}
+    }
+
+    public void replaceSpacebarFile(String path){
+        try {
+            FileReader fileReader = new FileReader(path);
+            FileWriter fileWriter = new FileWriter("Labs\\src\\Lab20\\textOut");
+            Scanner sc = new Scanner(fileReader);
+
+            while (sc.hasNextLine())
+                fileWriter.write(replaceSpacebar('#', sc.nextLine()));
+
+            fileReader.close();
+            fileWriter.flush();
+            fileWriter.close();
+        }
+        catch (IOException ignored){}
+    }
+    }
