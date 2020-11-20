@@ -60,7 +60,7 @@ public class Shop {
                 }
 
             if (!user.getTIN().equals(TIN))
-                throw new MyExeption();
+                throw new MyException();
 
             else {
                 Map.Entry<String, Double> item = getItem(itemName);
@@ -73,7 +73,7 @@ public class Shop {
                 }
             }
         }
-        catch (MyExeption e){
+        catch (MyException e){
             System.out.println(e.getMessage());
             return "Невозможно добавить товар " + itemName + "\n----------------------------------------------";
         }
@@ -89,12 +89,12 @@ public class Shop {
                 }
 
             if (!user.getTIN().equals(TIN))
-                throw new MyExeption();
+                throw new MyException();
 
             else
                 return user.getCart() + "----------------------------------------------";
         }
-        catch (MyExeption e){
+        catch (MyException e){
             System.out.println(e.getMessage());
             return "Невозможно открыть корзину пользователя " + fullName + "\n----------------------------------------------";
         }
